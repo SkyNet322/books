@@ -31,6 +31,7 @@ class Author extends ActiveRecord
     public function rules()
     {
         return [
+            [['first_name', 'middle_name', 'last_name'], 'required'],
             [['first_name', 'middle_name', 'last_name'], 'string', 'max' => 255],
         ];
     }
@@ -48,6 +49,11 @@ class Author extends ActiveRecord
         ];
     }
 
+    public static function find()
+    {
+        return new AuthorQuery(get_called_class());
+    }
+
     /**
      * @return ActiveQuery
      */
@@ -62,5 +68,10 @@ class Author extends ActiveRecord
     public function getBooksCount()
     {
         return $this->getBooks()->count();
+    }
+
+    public function getFullName()
+    {
+        return "$this->first_name $this->middle_name $this->last_name";
     }
 }
