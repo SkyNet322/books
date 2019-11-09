@@ -4,12 +4,24 @@ namespace app\modules\v1\controllers;
 
 use app\models\Book;
 use Yii;
+use yii\filters\auth\HttpBearerAuth;
 use yii\rest\Controller;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 
 class BooksController extends Controller
 {
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => HttpBearerAuth::class,
+            'only' => ['update', 'delete'],
+        ];
+        return $behaviors;
+    }
+
     /**
      * @return Book[]|array|\yii\db\ActiveRecord[]
      */
