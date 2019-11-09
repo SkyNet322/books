@@ -55,6 +55,8 @@ class BookSearch extends Book
             return $dataProvider;
         }
 
+        $query->with('author');
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id ,

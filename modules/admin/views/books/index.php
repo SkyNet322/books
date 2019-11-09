@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Book;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BookSearch */
@@ -18,17 +19,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id ',
+            'id',
             'title',
-            'author_id',
+            [
+                'label' => 'Автор',
+                'value'     => function (Book $book) {
+                    $author = $book->author;
+                    return "$author->first_name $author->middle_name $author->last_name";
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
