@@ -52,8 +52,8 @@ class Moderator extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfa
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'password' => 'Password',
+            'username' => 'Имя пользователя',
+            'password' => 'Пароль',
             'token' => 'Token',
             'auth_key' => 'authKey',
         ];

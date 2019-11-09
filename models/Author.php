@@ -42,7 +42,7 @@ class Author extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'Номер',
             'first_name' => 'Имя',
             'middle_name' => 'Отчество',
             'last_name' => 'Фамилия',

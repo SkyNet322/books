@@ -49,7 +49,7 @@ class Book extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Id',
+            'id' => 'Номер',
             'title' => 'Название',
             'author_id' => 'Автор',
         ];
