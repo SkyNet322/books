@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  web:
+    build: ./docker/web
+    ports:
+      - "8888:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/web/sites-available:/etc/apache2/sites-available
+
   db:
     image: postgres
     restart: always
