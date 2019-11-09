@@ -15,6 +15,9 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '5JwQ8B_voPmNVPH3tegpFWbbMnjyTOc1',
+            'parsers' => [
+                'application/json' => \yii\web\JsonParser::class,
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -46,6 +49,12 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [
+                'GET /api/v1/books/list' => '/v1/books/list',
+                'GET /api/v1/books/by-id/<id>' => '/v1/books/by-id',
+                'POST /api/v1/books/update' => '/v1/books/update',
+                'DELETE /api/v1/books/delete/<id:\d+>' => '/v1/books/delete'
+            ]
         ],
     ],
     'params' => $params,
@@ -53,9 +62,9 @@ $config = [
         'admin' => [
             'class' => app\modules\admin\Module::class
         ],
-        'api' => [
-            'class' => app\modules\api\Module::class,
-        ],
+        'v1' => [
+            'class' => app\modules\v1\Module::class
+        ]
     ],
 ];
 
