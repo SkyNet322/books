@@ -30,7 +30,7 @@ class Book extends ActiveRecord
     public function rules()
     {
         return [
-            [['author_id'], 'default', 'value' => null],
+            [['author_id', 'title'], 'required'],
             [['author_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
             [
