@@ -46,11 +46,14 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
         ],
     ],
     'params' => $params,
+    'modules' => [
+        'admin' => [
+            'class' => app\modules\admin\Module::class
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
@@ -68,6 +71,7 @@ if (YII_ENV_DEV) {
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
+    //\yii\helpers\VarDumper::dump($config, 10, true);
 }
 
 return $config;
