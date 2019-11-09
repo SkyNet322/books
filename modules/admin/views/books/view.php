@@ -32,7 +32,10 @@ YiiAsset::register($this);
         'attributes' => [
             'id',
             'title',
-            'author_id',
+            [
+                'label' => 'Автор',
+                'value' => $model->author->fullName
+            ]
         ],
     ]) ?>
 
